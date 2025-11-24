@@ -64,7 +64,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocola
 
 ```powershell
 choco install -y git cmake
-choco install -y vcredist2013 vcredist140
+choco install -y vcredist140
 ```
 
 ---
@@ -92,6 +92,12 @@ Teste:
 python --version
 ```
 
+ou com choco:
+
+```
+choco install -y python --version=3.8.3
+```
+
 ---
 
 # 5. Instalar OpenSSL 1.1.1 (Win64)
@@ -99,6 +105,13 @@ python --version
 Baixe:
 
 [https://slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html)
+
+
+ou use chocolatey:
+
+```
+choco install -y openssl --version 1.1.1.2100
+```
 
 Instale em:
 
@@ -149,7 +162,7 @@ python -m pip install -U colcon-common-extensions
 ```bat
 set PATH=C:\Python38;C:\Python38\Scripts;%PATH%
 python -m pip install -U setuptools packaging
-python -m pip install numpy pyyaml lark netifaces empy pygame
+python -m pip install numpy pyyaml lark netifaces empy==3.3.4 pygame
 ```
 
 ---
@@ -166,8 +179,7 @@ mkdir C:\dev\cg_ws\src
 Copiar para `src\`:
 
 ```
-cg\
-cg_interfaces\
+culling_games\
 maze_solvers\
 ```
 
@@ -176,8 +188,7 @@ Estrutura final:
 ```
 C:\dev\cg_ws\
  ├── src\
- │    ├── cg\
- │    ├── cg_interfaces\
+ │    ├── culling_games\
  │    └── maze_solvers\
  ├── build\
  ├── install\
@@ -207,6 +218,26 @@ call install\local_setup.bat
 ```
 
 Os executáveis C++ dos solvers são gerados na pasta `install`.
+
+
+## 10.1. Antivirus
+
+Caso seu antivirus bloqueie a compilação adicione as seguintes exeções:
+
+Arquivos / processos
+```
+C:\Python38\python.exe
+```
+```
+C:\Python38\Scripts\colcon.exe
+```
+Pastas
+```
+C:\dev\cg_ws\
+```
+```
+C:\humble\ros2-windows\
+```
 
 ---
 
